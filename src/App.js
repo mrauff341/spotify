@@ -2,6 +2,8 @@ import React, {useState, useDispatch, useEffect} from 'react';
 import './App.css';
 import axios from 'axios'
 
+const API_KEY = 'jwk3vm89s4NSzG4KlIKLieCMoBL3uO4s';
+const URL = "https://api.giphy.com/v1/gifs/trending";
 function App() {
   
   const [authToken, setAuthToken] = useState("");
@@ -15,41 +17,47 @@ function App() {
   const [searchKey, setSearchKey] = useState('');
   const [gifData, setGifData] = useState([]);
   
- const onChange = (e) => {
-   this.setSearchKey({
-     searchKey: e.target.value
-   })
- }
+//  const onChange = (e) => {
+//    this.setSearchKey({
+//      searchKey: e.target.value
+//    })
+//  }
 
- const handleSearch = async (e) => {
-  e.preventDefault();
-  const url = "https://api.spotify.com/v1/search";
-  const keywords = searchKey;
-  const type = "track";
-  try {
-    const response = await fetch(`${url}?q=${keywords}&type=${type}&limit=10`, {
-      headers: {
-        'Authorization' : 'Bearer ' + authToken
-      }
-    });
+ useEffect (() => {
+    fetch (`${URL}?api_key=${API_KEY}&limit=12`)
+    .then(response => response.json())
+    .then(gif => setGifData(gif.data));
+ }, []);
+
+//  const handleSearch = async (e) => {
+//   e.preventDefault();
+//   const url = "https://api.spotify.com/v1/search";
+//   const keywords = searchKey;
+//   const type = "track";
+//   try {
+//     const response = await fetch(`${url}?q=${keywords}&type=${type}&limit=10`, {
+//       headers: {
+//         'Authorization' : 'Bearer ' + authToken
+//       }
+//     });
     
-    if (!response.ok) {
-      switch (response.status) {
-        case 401:
-          throw new Error(`Unauthorized access, please login first`);
-        case 403:
-          throw new Error(`Forbidden access`);
-        default:
-          throw new Error(`HTTP error! status: ${response.status}`);
-      }
-    } else {
-      const musicData = await response.json()
-      setMusicData(musicData.tracks.items);
-    }
-  } catch (error) {
-    alert(`There has been a problem with your fetch operation: ${error.message}`);
-  }
-};
+//     if (!response.ok) {
+//       switch (response.status) {
+//         case 401:
+//           throw new Error(`Unauthorized access, please login first`);
+//         case 403:
+//           throw new Error(`Forbidden access`);
+//         default:
+//           throw new Error(`HTTP error! status: ${response.status}`);
+//       }
+//     } else {
+//       const musicData = await response.json()
+//       setMusicData(musicData.tracks.items);
+//     }
+//   } catch (error) {
+//     alert(`There has been a problem with your fetch operation: ${error.message}`);
+//   }
+// };
 
  
 
@@ -85,14 +93,14 @@ function App() {
         <div className="search-bar-container">
           <div className='title'>
             <h3> Title </h3> 
-            <input type="text" onChange={onChange}/>
+            <input type="text" /*onChange={onChange}*//>
             </div>
 
           <div className='description'>
             <h3>description</h3>
-            <input type="text" onChange={onChange}/>
+            <input type="text" /*onChange={onChange}*//>
           </div>
-            <input type="submit" value="Search" onClick={handleSearch}/>
+            <input type="submit" value="Search"/>
         </div>
         <div>
           {
