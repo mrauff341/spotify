@@ -1,9 +1,18 @@
 import React, {useState, useDispatch, useEffect} from 'react';
 import './App.css';
 import axios from 'axios'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
+
+import trending from './trending';
+import search from './search';
 
 const API_KEY = 'jwk3vm89s4NSzG4KlIKLieCMoBL3uO4s';
 const URL = "https://api.giphy.com/v1/gifs/trending";
+
 function App() {
   
   const [authToken, setAuthToken] = useState("");
@@ -87,28 +96,40 @@ function App() {
   
 
   return (  
-    <div className="App">
-      <div className="container">
-        <h1>Create Playlist</h1>
-        <div className="search-bar-container">
-          <div className='title'>
-            <h3> Title </h3> 
-            <input type="text" /*onChange={onChange}*//>
-            </div>
+      <Router>
+        <Switch>
+          <Route path="">
+            <trending/>
+            
+          </Route>
 
-          <div className='description'>
-            <h3>description</h3>
-            <input type="text" /*onChange={onChange}*//>
-          </div>
-            <input type="submit" value="Search"/>
-        </div>
-        <div>
-          {
-            //this.state.gifData.map((gif) => <div key={gif.id} title={gif.title} url={gif.images.fixed_width.url}/>)
-          }
-        </div>
-      </div>
-    </div>
+          <Route path = "/search">
+            <h1>we search here</h1>
+          </Route>
+        </Switch>
+      </Router>
+    // <div className="App">
+    //   <div className="container">
+    //     <h1>Create Playlist</h1>
+    //     <div className="search-bar-container">
+    //       <div className='title'>
+    //         <h3> Title </h3> 
+    //         <input type="text" /*onChange={onChange}*//>
+    //         </div>
+
+    //       <div className='description'>
+    //         <h3>description</h3>
+    //         <input type="text" /*onChange={onChange}*//>
+    //       </div>
+    //         <input type="submit" value="Search"/>
+    //     </div>
+    //     <div>
+    //       {
+    //         //this.state.gifData.map((gif) => <div key={gif.id} title={gif.title} url={gif.images.fixed_width.url}/>)
+    //       }
+    //     </div>
+    //   </div>
+    // </div>
   );
 
 }

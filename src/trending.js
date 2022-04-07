@@ -11,5 +11,7 @@ return (
             <input type="submit"/>
         </div>
     </>
-)
+);
 }
+
+export default trending;
