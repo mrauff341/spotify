@@ -99,7 +99,17 @@ function App() {
       <Router>
         <Switch>
           <Route path="">
-            <trending/>
+            <div classname ='item'>
+              <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSF75A5ILtOCNtp1YZiu2S5qR04Z9oSDL9qg&usqp=CAU'/>
+              <h1>Goosebumps</h1>
+              <p>Travis Scott</p>
+            </div>
+
+            <div style={item}>
+              <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSF75A5ILtOCNtp1YZiu2S5qR04Z9oSDL9qg&usqp=CAU'/>
+              <h1>Goosebumps</h1>
+              <p>Travis Scott</p>
+            </div>
             
           </Route>
 
