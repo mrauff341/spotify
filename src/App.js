@@ -7,7 +7,7 @@ import {
     Route
 } from "react-router-dom";
 
-import trending from './trending';
+// import trending from './trending';
 import search from './search';
 
 const API_KEY = 'jwk3vm89s4NSzG4KlIKLieCMoBL3uO4s';
@@ -103,6 +103,7 @@ function App() {
               <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSF75A5ILtOCNtp1YZiu2S5qR04Z9oSDL9qg&usqp=CAU'/>
               <h1>Goosebumps</h1>
               <p>Travis Scott</p>
+              <button>search</button>
             </div>
 
             <div style={item}>
